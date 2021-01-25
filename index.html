@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en" style="color: #121212" >
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Calculator</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Work+Sans:300" rel="stylesheet">
+    <link rel="stylesheet" href="Static/style.css">
+    
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Catamaran|Lato:400i" rel="stylesheet">
+    
+    </head>
+
+
+<body>
+<div id="wrapper">
+    <header >
+        <div class="flex-box-container-1">
+            <p >Aathithan Chandrabalan</p> 
+            <p> Personal Finance Calculator</p> 
+            <p id="clock-top-right" class="flex-box-container-2"></p>
+        </div>
+        
+    </header>
+
+
+    <main>
+
+        <span class="container-1" >
+            
+            <div class="container" id="container">
+            <img class="image" id="image" src="/Static/Capture.PNG" >
+            </div>
+            
+            <div class="text" >
+                <h2 class="title" id="text"> Stay Afloat. <br/> Don't let your <br/> expenses sink <br/> you.</h2>
+            </div>
+
+           
+            <div class="information" id="info" >
+                <p class="header-1"> Navigation</p>
+                <p class="text-p">To begin, select the NET INCOME or EXPENSES button below. Please fill out all entries and click confirm when you are done. Entries can be changed at any time, simply write the new amount and re-click confirm. To move to the next section, use the buttons on the navigation bar below. To start over, click the HOME button. </p>
+            </div>
+
+            
+        </span>
+
+    <div class="footer">
+
+        <span>
+            <button type="submit" class="btn-balance"  onclick="refreshPage()"> HOME </button> <!-- All incoming-->
+        </span>
+
+        <span>
+            <button class="btn-balance" id="btn-balance" onclick="btnBalance()"> NET INCOMING </button> <!-- All incoming-->
+        </span>
+
+        <span>
+            <button class="btn-incoming" onclick="btnIncoming()">EXPENSES</button> <!-- all expenses-->
+        </span>
+
+        <span>
+            <button class="btn-outgoing" onclick="btnOutgoing()">OVERVIEW</button> <!--Monthly/yearly net overview-->
+        </span>
+
+        
+
+    </div>
+
+
+    <!-- TItle Box Left-Hand-->
+    <div id="titleBox">
+
+        <div class="balance-main-title" id="balanceTitle" style="display: none;">
+            <h5>NET INCOMING</h5>
+        </div>
+
+        <div class="incoming-main-title" id="incomingTitle" style="display: none;">
+            <h5>EXPENSES</h5>
+        </div>
+
+        <div class="outgoing-main-title" id="outgoingTitle"  style="display: none;">
+            <h5>OVERVIEW</h5>
+        </div>
+
+        <div class="due-main-title" id="dueTitle" style="display: none;">
+            <h5>Calendar</h5>
+        </div>
+
+
+    </div>
+
+    
+    <!-- Main Box-->
+    <div id="mainBox">
+
+
+
+        <div class="balance-main-outline" id="balanceMain" style="display: none;"> 
+            <div class="container">
+
+                <div class="white-box"> 
+                    
+                        <br/>
+                        <p style="color: white;" class="net-box-title-1">Input Incoming Gross Amounts</p>
+                        <div id="container-btn" class="container-btn">
+                            
+                            <br/>
+                            <br/>
+                            <p class="text-p"> Input Gross Earnings from Employment - Monthly</p>
+                            <div id="nameDiv-1" class="input-1"> <input id="name" type="number" class="input-special" placeholder="Input Amount Here"/> <button class="confirm-button" id="btn-get" onclick="addTwoNumbers('name', 'name-2', 'name-3'); calculate('name', 'name-2', 'name-3', 'name-10', 'name-20', 'name-30', 'name-40', 'name-50', 'name-60','name-70')">Confirm</button></div>
+                            <br/>
+                            <br/>
+                            <p class="text-p">  Input Gross Earnings from OSAP Loans + Grants - Per Semester</p>
+                            <div id class="input-2"> <input id="name-2" class="name-2" type="number" class="input" placeholder="$..."/> </div>
+                            <br/>
+                            <br/>
+                            <p class="text-p"> Input total Familial Support Amount - Monthly</p>
+                            <div id class="input-2"> <input id="name-3" class="name-3" type="number"  class="input"placeholder="$..."/> </div>
+                            <br/>
+                            
+                        </div>
+                                        
+                </div>
+            
+        
+
+                <div class="result-box-2">
+                    <div>
+                        <br/>
+                        <br/>
+                    <p class="header-1" style="color: white;">Monthly Gross Income</p>
+                        
+                        <p class="text-p"> Total Amount Received for the month.</p>
+                        <br/>
+                        <div id="monthly-net-result" class="monthly-net-result">
+                            <div id="work"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="result-box-3">
+                    
+                        <div class="upward">
+                        <p class="header-1" style="color: white;">Estimated Yearly Gross Income </p>
+                        <p class="text-p"> Total Amount Received for the year.</p>
+                        <br/>
+                        <br/>
+                        <div id="yearly-net-result" class="yearly-net-result"></div>
+                        </div>
+                    
+                    
+                </div>
+            </div>
+    
+        </div>  
+
+
+
+
+        <div class="incoming-main-outline" id="incomingMain" style="display: none;">
+            <div class="container">
+
+                <div class="white-box-2">
+                    <br/>
+                    <p class="net-box-title-1" style="color: white;">Input Outgoing Expenses</p>
+                    
+                            <p class="text-p">Rent - Monthly</p>
+                            <div id="nameDiv-1" class="input-1"> <input id="name-10" type="number" class="input" placeholder="Input Amount Here"/> <button class="confirm-button-2"  onclick="addTwoNumbersAgain('name-10', 'name-20', 'name-30', 'name-40', 'name-50', 'name-60','name-70'); calculate('name', 'name-2', 'name-3', 'name-10', 'name-20', 'name-30', 'name-40', 'name-50', 'name-60','name-70')">Confirm</button></div>
+                            <p class="text-p"> Tuition and School supplies - Per Semester</p>
+                            <div id class="input-2"> <input id="name-20" class="name-20" type="number"   placeholder="$..."/> </div>
+                            <p class="text-p"> Diet and Consumables - Monthly</p>
+                            <div id class="input-2"> <input id="name-30" class="name-20" type="number"  placeholder="$..."/> </div>
+                            <p class="text-p"> Transportation - Monthly</p>
+                            <div id class="input-2"> <input id="name-40" class="name-20" type="number"  placeholder="$..."/> </div>
+                            <p style="display: none;"> Clothes</p>
+                            <div style="display: none" class="input-2"> <input id="name-50" class="name-20" type="number" class="input" placeholder="$..."/> </div>
+                            <p class="text-p"> Phone bill, Gym, Netflix and other subscriptions - Monthly</p>
+                            <div id class="input-2"> <input id="name-60" class="name-20" type="number"  placeholder="$..."/> </div>
+                            <p class="text-p"> Other Monthly Expenses</p>
+                            <div id class="input-2"> <input id="name-70" class="name-20" type="number"  placeholder="$..."/> </div>
+                    
+                        </div>    
+        </div>
+
+
+
+
+                <div class="result-box-4">
+                    
+                    <br/>
+                    <br/>
+                    <p style="color: white;" class="header-1">Monthly Net Expenses</p>
+                    <p class="text-p">Total Monthly Expenses Amount</p>
+                    <br/>
+                    <div id="monthly" class="monthly"></div>
+                </div>
+
+
+
+
+
+
+                <div class="result-box-5">
+                    <br/>
+                    <div class="upwards-2">
+                    <p style="color: white;" class="header-1"> Estimated Yearly Monthly Expenses</p>
+                    <p class="text-p">Monthly Total Outgoing Amount</p>
+                    <br/>
+                    <br/>
+                    <div id="yearly" class="yearly"></div>
+                    </div>
+                </div>
+            </div>
+        
+            
+        </div>  
+
+
+
+
+
+        <div class="outgoing-main-outline" id="outgoingMain" style="display: none;">
+        
+            <div class="white-box-3">
+                <br/>
+                <p class="header-1">Total Earnings</p> 
+                <br/>
+                <div class="total-earnings" id="total-earnings"></div>
+            </div>
+
+            <div class="result-box-6">
+                <br/>
+                <p class="header-1">Total Expenses</p>
+                <br/>
+                <div class="total-expenses" id="total-expenses"></div>
+            </div>
+
+            <div class="result-box-7">
+                <br/>
+                <p class="header-1">Total Monthly Balance</p>
+                <div class="monthly-profits" id="monthly-profits"></div>
+                <br/>
+                <br/>
+                <p class="header-1">Total Yearly Balance</p>
+                <div class="yearly-profits" id="yearly-profits"></div>
+                
+
+                
+            </div>
+                
+            <div class="result-box-8">
+                
+                <p class="text-p"> Savings - Monthly</p>
+                <div class="savings" id="savings"></div>
+                <br/>
+                <p class="text-p"> Emergency - Monthly</p>
+                <div class="emergency" id="emergency"></div>
+                <br/>
+                <p class="text-p"> Free Expenses - Monthly</p>
+                <div class="free-expenses" id="free-expenses"></div>
+            </div>
+            
+        </div> 
+
+        
+
+    </div>
+
+    
+
+    
+
+    </main>
+
+    
+
+    <footer>
+        
+    </footer>
+
+    <script src="/Static/script.js"></script>
+    
+
+</div>
+</body>
+
+
+</html>
